@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Longevity Switch</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Michroma&display=swap" rel="stylesheet">
+<style>
+:root{--c:#5ee7ff;--g:#e8c872;--v:#9b7bff;--t:#dbe9f7;--m:#8aa3bd;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{font-style:italic!important}
+html,body{height:100%;overflow:hidden;background:#000;color:var(--t);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+#bg,#cv,#veil{position:fixed;inset:0}
+#bg{background:radial-gradient(ellipse at 50% 35%,#0d2350,#060d22 55%,#02040b)}
+#bg::after{content:"";position:absolute;inset:-25%;background:conic-gradient(from 195deg at 72% -12%,transparent 0 9%,rgba(94,231,255,.12) 13%,transparent 19% 29%,rgba(155,123,255,.1) 33%,transparent 40%);mix-blend-mode:screen;animation:sway 16s ease-in-out infinite alternate}
+@keyframes sway{to{transform:rotate(7deg) scale(1.12)}}
+#cv{z-index:1}
+#veil{background:#000;pointer-events:none;z-index:5}
+#veil.go{animation:vl 4.5s 1s forwards}
+@keyframes vl{to{opacity:0}}
+.sc{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:4vw;padding:60px 5vw 44px;opacity:0;visibility:hidden;transition:opacity 1.4s,visibility 1.4s;pointer-events:none}
+.sc.on{opacity:1;visibility:visible}
+@keyframes fi{to{opacity:1}}
+@keyframes up{to{opacity:1;transform:none}}
+.fi{opacity:0}.on .fi{animation:fi 1.2s var(--d,0s) forwards}
+/* title */
+#s0{flex-direction:column;gap:3vh}
+.tw{display:flex;gap:.45em;flex-wrap:wrap;justify-content:center;font:400 clamp(24px,6vw,74px)/1.25 Michroma,"Trebuchet MS",sans-serif;letter-spacing:.16em;text-align:center;padding-left:.16em}
+.on .tw{animation:zm 13s linear both}@keyframes zm{to{transform:scale(1.1)}}
+.w{position:relative;display:inline-block;opacity:0;color:transparent;-webkit-text-stroke:1px var(--c)}
+.w::before{content:"";position:absolute;left:-10%;right:-10%;top:50%;height:2px;background:linear-gradient(90deg,transparent,#d5f6ff,transparent);box-shadow:0 0 18px 4px rgba(94,231,255,.6);transform:scaleX(0);opacity:0}
+.on .w{animation:wd 3s var(--d) forwards}.on .w::before{animation:st 1.5s calc(var(--d) + .8s) both}
+@keyframes wd{0%{opacity:0;filter:blur(20px);transform:scale(1.6)}55%{opacity:1;filter:blur(1px);transform:scale(1.08);-webkit-text-stroke-color:#9ff3ff}100%{opacity:1;filter:blur(0);transform:none;color:#eef8ff;-webkit-text-stroke-color:transparent;text-shadow:0 0 24px rgba(94,231,255,.7),0 0 60px rgba(59,130,246,.5)}}
+@keyframes st{0%{transform:scaleX(0);opacity:1}50%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1.25);opacity:0}}
+.dis .w{animation:ds 2.2s forwards}.dis .sub{animation:none;opacity:0;transition:opacity 1s}
+@keyframes ds{from{opacity:1;color:#eef8ff;filter:blur(0);text-shadow:0 0 24px rgba(94,231,255,.7)}to{opacity:0;color:#eef8ff;filter:blur(16px);transform:translateY(-18px) scale(1.08);letter-spacing:.3em}}
+.sub{font-size:11px;letter-spacing:.5em;text-transform:uppercase;color:var(--m);opacity:0;text-align:center}.on .sub{animation:fi 2s 8.8s forwards}
+/* credit */
+.by{position:absolute;left:0;right:0;top:calc(50% - var(--off,60px));text-align:center;font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--m);opacity:0}
+.on .by{animation:fi 2s 6s forwards}
+.nm{font:italic 600 var(--nf,64px)/1.15 "Cormorant Garamond",Georgia,serif;text-align:center;max-width:90vw;opacity:0;-webkit-text-fill-color:transparent;color:transparent;background:linear-gradient(100deg,#c9a64f 30%,#fff6d0 50%,#c9a64f 70%) 120%/250% 100% no-repeat;-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 14px rgba(232,200,114,.5))}
+.on .nm{animation:fi 3s 7s forwards,sw 4s 10.5s ease-in-out infinite}
+@keyframes sw{0%{background-position:120% 0}60%,100%{background-position:-30% 0}}
+/* captions */
+.vis{flex:1 1 46%;height:100%;max-width:560px;display:flex}.vis svg{width:100%;height:100%}
+.cap{flex:1 1 34%;max-width:400px}
+.cap h3{font:400 12px Michroma,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--c);margin-bottom:14px;line-height:1.6}
+.cap p{margin:0 0 12px;opacity:0;transform:translateY(8px)}
+.on .cap p{animation:up 1s calc(var(--i)*3.4s + 2.5s) forwards}
+.tag{display:inline-block;margin-right:8px;padding:1px 8px;border:1px solid;border-radius:99px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;vertical-align:1px}
+.e{color:var(--c)}.h{color:var(--v)}.u{color:var(--g)}
+.warn{border-left:2px solid var(--g);padding-left:10px;color:#f3e3b0}
+/* svg */
+svg text{fill:#d7e6f5;font:12.5px system-ui,sans-serif;paint-order:stroke;stroke:#050b1c;stroke-width:3.5px;stroke-linejoin:round}
+.mc{text-anchor:middle}.gd{fill:#e8c872}.cy{fill:#5ee7ff}.vi{fill:#b9a6ff}.sm{font-size:11px;fill:#8aa3bd}
+.nd{fill:rgba(94,231,255,.1);stroke:#5ee7ff99}.dim{opacity:.38}
+.ln{stroke:#5ee7ff88;fill:none;stroke-width:1.3}
+.fl{fill:none;stroke:#5ee7ff;stroke-width:1.7;stroke-dasharray:3 9;stroke-linecap:round;opacity:0}
+.vf{stroke:#b9a6ff}
+.on .fl{animation:fi 1s var(--d) forwards,fd 1.1s var(--d) linear infinite}@keyframes fd{to{stroke-dashoffset:-24}}
+.on #ca{animation:za 4.2s cubic-bezier(.2,.7,.2,1) both}
+#ca{transform-origin:230px 270px}
+@keyframes za{from{transform:scale(.22);opacity:0;filter:blur(8px)}to{transform:none;opacity:1;filter:blur(0)}}
+.lig{opacity:0}.on .lig{animation:lg 3s 4.2s ease-in-out forwards}
+@keyframes lg{0%{transform:translate(120px,-110px);opacity:0}20%{opacity:1}100%{transform:none;opacity:1}}
+.ring{opacity:0;transform-box:fill-box;transform-origin:center}.on .ring{animation:rg 2.2s 7.2s ease-out 2 both}
+@keyframes rg{0%{transform:scale(.5);opacity:0}15%{opacity:1}100%{transform:scale(5);opacity:0}}
+.pu{transform-box:fill-box;transform-origin:center}.on .pu{animation:pl 2.4s infinite}@keyframes pl{50%{transform:scale(1.25);opacity:.6}}
+/* scene D */
+.dg{display:grid;grid-template-columns:1fr 38px 1fr;gap:10px 0;max-width:880px;width:100%;transition:opacity 1.5s,transform 1.5s}
+.fin .dg{opacity:0;transform:scale(.95)}
+.hd{font:400 11px Michroma,sans-serif;letter-spacing:.16em;text-align:center;color:var(--m);padding-bottom:4px}
+.cd{padding:12px 14px;border:1px solid #5ee7ff30;border-radius:12px;background:rgba(10,24,52,.6);backdrop-filter:blur(6px);font-size:13.5px;line-height:1.4;opacity:0;transform:translateY(8px)}
+.br{position:relative;opacity:0}
+.br::before{content:"";position:absolute;left:50%;top:-6px;bottom:-6px;border-left:2px dashed var(--k)}
+.br b{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px;border-radius:50%;border:1.5px solid var(--k);background:#07132b;font:600 12px/19px system-ui;text-align:center;color:var(--k);animation:bp 2.4s infinite}
+@keyframes bp{50%{box-shadow:0 0 14px var(--k)}}
+.on .cd,.on .br{animation:up 1s calc(var(--i)*2.6s + 1s) forwards}.on .br b{animation:bp 2.4s infinite}
+.q{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8vw;font:italic 600 clamp(22px,3.8vw,42px)/1.3 "Cormorant Garamond",Georgia,serif;color:#fff;text-shadow:0 0 22px rgba(94,231,255,.55),0 0 6px #000,0 0 12px #000;opacity:0;transition:opacity 2.2s 1s}
+.fin .q{opacity:1}
+/* ui */
+#ui{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:10px;display:flex;gap:6px;z-index:20;opacity:0;transition:opacity .8s}
+button{background:rgba(8,20,45,.65);border:1px solid #5ee7ff44;color:var(--t);padding:6px 12px;border-radius:99px;font:12px system-ui;cursor:pointer;backdrop-filter:blur(6px)}
+button:hover{border-color:var(--c)}button:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+#pg{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--c),var(--g));z-index:20}
+#dc{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:11px;color:var(--m);padding:0 14px;opacity:0;transition:opacity 1s;z-index:10;pointer-events:none;text-shadow:0 0 6px #000,0 0 3px #000}
+.sci #dc{opacity:1}
+#go{position:fixed;inset:0;background:#000;z-index:30;display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;transition:opacity 1s}
+#go small{color:var(--m);font-size:12px}
+.paused *,.paused *::before{animation-play-state:paused!important}
+@media(max-width:760px){.sc{flex-direction:column;padding:50px 12px 40px;gap:6px}.vis{flex:1 1 0;min-height:0;width:100%;max-width:none}.cap{flex:0 0 auto;max-width:none;width:100%}.cap p{font-size:12.5px;line-height:1.4;margin-bottom:6px}.cap h3{margin-bottom:6px;font-size:10px}.cd{font-size:11.5px;padding:8px 9px}.dg{grid-template-columns:1fr 26px 1fr}#ui button{padding:5px 9px;font-size:11px}#dc{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.3s!important}}
+</style></head><body>
+<div id="bg"></div><canvas id="cv"></canvas><div id="pg"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="gl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="gR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ee7ff"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>
+<radialGradient id="gG"><stop offset="0" stop-color="#fff6d0"/><stop offset="1" stop-color="#e8c872"/></radialGradient>
+<linearGradient id="gF"><stop offset="0" stop-color="#5ee7ff"/><stop offset="1" stop-color="#5ee7ff" stop-opacity="0"/></linearGradient>
+<marker id="ar" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#5ee7ff"/></marker></defs></svg>
+
+<!-- All scene text below is plain HTML/SVG text: edit it directly. -->
+<section class="sc" id="s0"><div class="tw"><span class="w" style="--d:3.5s">THE</span><span class="w" style="--d:5s">LONGEVITY</span><span class="w" style="--d:6.5s">SWITCH</span></div><p class="sub">A hypothetical research visualization</p></section>
+
+<section class="sc" id="s1"><div class="by">Created by</div><h2 class="nm">Sayan Mahjuba Suha</h2></section>
+
+<section class="sc" id="s2"><div class="vis"><svg viewBox="0 0 460 520" role="img" aria-label="Schematic of an IGF ligand binding the IGF1R receptor at the cell membrane and signaling downstream"><g id="ca">
+<g id="lip" opacity=".85"></g>
+<g fill="none" stroke-linecap="round" filter="url(#gl)"><path d="M203 256C190 214 196 170 216 140" stroke="url(#gR)" stroke-width="15"/><path d="M257 256C270 214 264 170 244 140" stroke="url(#gR)" stroke-width="15"/></g>
+<rect x="205" y="250" width="11" height="42" rx="5" fill="#8b6df0"/><rect x="244" y="250" width="11" height="42" rx="5" fill="#8b6df0"/>
+<ellipse cx="211" cy="313" rx="20" ry="17" fill="url(#gR)"/><ellipse cx="249" cy="313" rx="20" ry="17" fill="url(#gR)"/>
+<circle cx="230" cy="146" r="9" fill="none" stroke="#e8c872" stroke-dasharray="3 3" opacity=".6"/>
+<g class="lig"><circle cx="230" cy="146" r="9" fill="url(#gG)" filter="url(#gl)"/></g>
+<circle class="ring" cx="230" cy="146" r="12" fill="none" stroke="#e8c872" stroke-width="2"/></g>
+<g class="fi" style="--d:3.2s"><text x="332" y="68" class="gd">IGF ligand</text></g>
+<g class="fi" style="--d:5s"><path class="ln" d="M120 186H198"/><text x="8" y="190">α subunits (bind ligand)</text></g>
+<g class="fi" style="--d:5.4s"><path class="ln" d="M256 265H278"/><text x="282" y="262">β subunits (span membrane)</text></g>
+<g class="fi" style="--d:5.8s"><path class="ln" d="M232 313H282"/><text x="286" y="337" class="cy">Tyrosine kinase</text><text x="286" y="352" class="cy">domains</text></g>
+<g class="fi" style="--d:5s"><text x="8" y="240" class="sm">EXTRACELLULAR</text><text x="8" y="276" class="sm">CELL MEMBRANE</text><text x="8" y="304" class="sm">INTRACELLULAR</text></g>
+<g class="fi" style="--d:8.2s"><circle cx="193" cy="327" r="5" fill="#e8c872"/><circle cx="267" cy="327" r="5" fill="#e8c872"/><text x="8" y="345" class="gd">Phosphorylation</text><path class="ln" d="M96 341L186 330" stroke="#e8c87288"/></g>
+<g class="fi" style="--d:9.4s"><rect class="nd" x="150" y="362" width="160" height="26" rx="13"/><text x="230" y="380" class="mc">IRS adaptor proteins</text></g>
+<g class="fi" style="--d:10.4s"><rect class="nd" x="150" y="404" width="160" height="26" rx="13"/><text x="230" y="422" class="mc">PI3K → AKT</text></g>
+<g class="fi" style="--d:11.4s"><rect class="nd" x="150" y="446" width="160" height="26" rx="13"/><text x="230" y="464" class="mc">FOXO transcription factor</text></g>
+<path class="fl" style="--d:9s" marker-end="url(#ar)" d="M230 332V360"/><path class="fl" style="--d:10s" marker-end="url(#ar)" d="M230 390V402"/><path class="fl" style="--d:11s" marker-end="url(#ar)" d="M230 432V444"/>
+<g class="fi" style="--d:12s"><text x="230" y="496" class="mc gd">Metabolism · growth · stress response</text></g>
+</svg></div><div class="cap"><h3>Scene A — The molecular world</h3>
+<p style="--i:0"><span class="tag e">Established</span>Cells sense growth signals through receptors in their membrane.</p>
+<p style="--i:1"><span class="tag e">Established</span>IGF1R is a receptor tyrosine kinase. IGF ligands bind its extracellular α subunits.</p>
+<p style="--i:2"><span class="tag e">Established</span>Binding activates the kinase domains and relays the signal through IRS, PI3K–AKT and FOXO. Schematic view.</p></div></section>
+
+<section class="sc" id="s3"><div class="vis"><svg viewBox="0 0 460 520" role="img" aria-label="Comparison of normal and reduced daf-2 signaling in C. elegans">
+<g class="fi" style="--d:.6s"><text x="20" y="22" style="fill:#9fb6cf">Normal daf-2 signaling</text>
+<path id="w1" fill="none" stroke="#7f96b0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/><text x="20" y="150" class="sm">C. elegans</text>
+<rect class="nd" x="250" y="40" width="190" height="28" rx="14"/><text x="345" y="58" class="mc">DAF-2 · IGF1R-like receptor</text>
+<path class="ln" d="M345 70V84" marker-end="url(#ar)"/><rect class="nd" x="250" y="86" width="190" height="28" rx="14"/><text x="345" y="104" class="mc">AGE-1 · PI3K</text>
+<path class="ln" d="M345 116V128M335 128H355"/><rect class="nd dim" x="250" y="134" width="190" height="28" rx="14"/><text x="345" y="152" class="mc">DAF-16 · FOXO</text>
+<text x="250" y="182" class="sm">FOXO restrained</text>
+<text x="20" y="200" class="sm">Lifespan (illustrative, not to scale)</text><rect x="20" y="207" width="150" height="8" rx="4" fill="#7f96b0"/></g>
+<g transform="translate(0 258)" class="fi" style="--d:5s"><text x="20" y="22" class="cy">Reduced daf-2 function</text>
+<path id="w2" fill="none" stroke="url(#gR)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" filter="url(#gl)"/><text x="20" y="150" class="sm">C. elegans · daf-2 mutant</text>
+<rect class="nd dim" x="250" y="40" width="190" height="28" rx="14" stroke-dasharray="4 3"/><text x="345" y="58" class="mc" style="opacity:.55">DAF-2 · reduced</text>
+<path class="ln dim" d="M345 70V84"/><rect class="nd dim" x="250" y="86" width="190" height="28" rx="14"/><text x="345" y="104" class="mc" style="opacity:.55">AGE-1 · PI3K</text>
+<path class="ln dim" d="M345 116V128"/><rect x="250" y="134" width="190" height="28" rx="14" fill="rgba(232,200,114,.15)" stroke="#e8c872" filter="url(#gl)"/><text x="345" y="152" class="mc gd">DAF-16 · FOXO active</text>
+<text x="250" y="182" class="sm gd">FOXO active in nucleus</text>
+<text x="20" y="200" class="sm">Lifespan (illustrative, not to scale)</text><rect x="20" y="207" width="330" height="8" rx="4" fill="url(#gF)"/><text x="356" y="216" class="cy sm">longer…</text></g>
+</svg></div><div class="cap"><h3>Scene B — The worm research inspiration</h3>
+<p style="--i:0"><span class="tag e">Established</span>C. elegans carries daf-2, which encodes an insulin/IGF-1-like receptor.</p>
+<p style="--i:1"><span class="tag e">Established</span>Reducing daf-2 signaling extends lifespan in worms, in a way that depends on the FOXO factor DAF-16.</p>
+<p class="warn" style="--i:2">Findings in worms do not automatically establish the same effect in humans.</p></div></section>
+
+<section class="sc" id="s4"><div class="vis"><svg viewBox="0 0 460 520" role="img" aria-label="Conceptual human IGF1R pathway with a hypothetical variant and unknown outcome">
+<ellipse cx="230" cy="285" rx="218" ry="225" fill="rgba(94,231,255,.03)" stroke="#9b7bff55"/>
+<text x="10" y="34" class="sm">Human cell (conceptual)</text>
+<g class="fi" style="--d:.5s" fill="none" stroke-linecap="round"><path d="M216 60C208 40 212 28 230 14M244 60C252 40 248 28 230 14" stroke="url(#gR)" stroke-width="9" filter="url(#gl)"/><ellipse cx="222" cy="76" rx="12" ry="10" fill="url(#gR)" stroke="none"/><ellipse cx="238" cy="76" rx="12" ry="10" fill="url(#gR)" stroke="none"/></g>
+<g class="fi" style="--d:1s"><text x="262" y="40" class="cy">IGF1R</text></g>
+<g class="fi" style="--d:3s"><path class="pu" d="M230 90l10 10-10 10-10-10z" fill="rgba(155,123,255,.25)" stroke="#b9a6ff" stroke-dasharray="3 2" filter="url(#gl)"/><path class="ln" d="M196 100H218" stroke="#b9a6ff88"/><text x="8" y="104" class="vi">Hypothetical variant (unspecified)</text></g>
+<g class="fi" style="--d:5s" fill="rgba(155,123,255,.12)" stroke="#9b7bff" stroke-dasharray="4 3"><rect x="62" y="140" width="96" height="26" rx="8"/><rect x="182" y="140" width="96" height="26" rx="8"/><rect x="302" y="140" width="96" height="26" rx="8"/></g>
+<g class="fi" style="--d:5s"><text x="110" y="158" class="mc vi">Stronger?</text><text x="230" y="158" class="mc vi">Weaker?</text><text x="350" y="158" class="mc vi">Unchanged?</text></g>
+<g class="fi" style="--d:7s"><rect class="nd" x="130" y="230" width="200" height="28" rx="14"/><text x="230" y="248" class="mc">Downstream signaling</text></g>
+<g class="fi" style="--d:8.2s"><rect class="nd" x="25" y="296" width="110" height="26" rx="13"/><rect class="nd" x="175" y="296" width="110" height="26" rx="13"/><rect class="nd" x="325" y="296" width="110" height="26" rx="13"/><text x="80" y="313" class="mc">PI3K–AKT–FOXO</text><text x="230" y="313" class="mc">MAPK / ERK</text><text x="380" y="313" class="mc">mTOR</text></g>
+<g class="fi" style="--d:11s"><rect x="80" y="400" width="300" height="40" rx="10" fill="rgba(232,200,114,.1)" stroke="#e8c872" stroke-dasharray="5 4" filter="url(#gl)"/><text x="230" y="425" class="mc gd" style="font-size:14px">Effect on human lifespan: UNKNOWN</text><text x="230" y="470" class="mc sm gd">Needs genetic, functional and clinical validation</text></g>
+<g style="--d:6s" class="vf-g"><path class="fl vf" style="--d:5.8s" d="M230 112C230 126 110 122 110 140"/><path class="fl vf" style="--d:5.8s" d="M230 112V140"/><path class="fl vf" style="--d:5.8s" d="M230 112C230 126 350 122 350 140"/>
+<path class="fl vf" style="--d:6.8s" d="M110 166C110 200 230 196 230 230"/><path class="fl vf" style="--d:6.8s" d="M230 166V230"/><path class="fl vf" style="--d:6.8s" d="M350 166C350 200 230 196 230 230"/>
+<path class="fl" style="--d:8.2s" d="M230 258C230 280 80 274 80 296"/><path class="fl" style="--d:8.2s" d="M230 258V296"/><path class="fl" style="--d:8.2s" d="M230 258C230 280 380 274 380 296"/>
+<path class="fl vf" style="--d:10s" d="M80 322C80 360 230 360 230 400"/><path class="fl vf" style="--d:10s" d="M230 322V400"/><path class="fl vf" style="--d:10s" d="M380 322C380 360 230 360 230 400"/></g>
+</svg></div><div class="cap"><h3>Scene C — The hypothetical human variant</h3>
+<p style="--i:0"><span class="tag h">Hypothesis</span>Suppose a naturally occurring variant altered IGF1R signaling in human cells.</p>
+<p style="--i:1"><span class="tag h">Hypothesis</span>Signaling could rise, fall or stay unchanged. Which pathways would shift is not known.</p>
+<p class="warn" style="--i:2"><span class="tag u">Unknown</span>No specific variant, effect size or lifespan outcome is proposed. Any outcome requires scientific validation.</p></div></section>
+
+<section class="sc" id="s5"><div class="dg">
+<div class="hd">C. elegans · daf-2</div><div></div><div class="hd">Humans · IGF1R</div>
+<div class="cd" style="--i:0"><span class="tag e">Established</span>Reduced daf-2 signaling extends worm lifespan via DAF-16/FOXO.</div><div class="br" style="--i:0;--k:#5ee7ff"><b>✓</b></div><div class="cd" style="--i:0"><span class="tag e">Established</span>IGF1R is a conserved growth-signaling receptor. Some cohort studies link IGF1R variants to long-lived groups; evidence is limited.</div>
+<div class="cd" style="--i:1"><span class="tag h">Hypothesis</span>The worm model helps test which signaling nodes matter.</div><div class="br" style="--i:1;--k:#9b7bff"><b>H</b></div><div class="cd" style="--i:1"><span class="tag h">Hypothesis</span>Natural variation in IGF1R signaling may be associated with human longevity.</div>
+<div class="cd" style="--i:2"><span class="tag u">Unanswered</span>Which downstream effects are conserved in mammals?</div><div class="br" style="--i:2;--k:#e8c872"><b>?</b></div><div class="cd" style="--i:2"><span class="tag u">Unanswered</span>Is any link causal? What direction, size and trade-offs? Does it replicate?</div>
+</div><div class="q">Could understanding IGF1R signaling help us understand human longevity?</div></section>
+
+<div id="dc">Hypothetical scientific visualization — proposed human longevity effects have not been experimentally validated.</div>
+<div id="ui"><button id="pz">Pause</button><button id="rp">Replay</button><button id="sk">Skip</button><button id="sd">Sound off</button></div>
+<div id="veil"></div>
+<div id="go"><button id="bs">Begin with sound</button><button id="bn">Begin silently</button><small>Headphones recommended</small></div>
+
+<script>
+const $=s=>document.querySelector(s),sc=[...document.querySelectorAll('.sc')],rnd=Math.random;
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const DU=[13,17,16,16,18,20],ST=[];let tot=0;DU.forEach(d=>{ST.push(tot);tot+=d});
+const cv=$('#cv'),cx=cv.getContext('2d');
+let W,H,t=0,paused=false,on=false,cur=-1,last=0,dis=0,fin=0,P=[],stars=[],npts=0,fs=60,au=null,mute=false;
+const spr=['94,231,255','232,200,114','155,123,255'].map(c=>{const k=document.createElement('canvas');k.width=k.height=32;const g=k.getContext('2d'),r=g.createRadialGradient(16,16,0,16,16,16);r.addColorStop(0,'rgba(255,255,255,.95)');r.addColorStop(.25,`rgba(${c},.8)`);r.addColorStop(1,`rgba(${c},0)`);g.fillStyle=r;g.fillRect(0,0,32,32);return k});
+function size(){const d=Math.min(devicePixelRatio||1,1.75);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cv.style.width=W+'px';cv.style.height=H+'px';cx.setTransform(d,0,0,d,0,0);if(cur==1&&P.length)prep()}
+function init(){const N=rm?160:(W<700?650:1300);for(let i=0;i<N;i++){const bx=(rnd()-.5)*14,by=(rnd()-.5)*14-3;P.push({x:rnd()*W,y:rnd()*H,vx:bx,vy:by,bx,by,c:rnd()<.5?0:(rnd()<.6?1:2),sz:3+rnd()*6,ph:rnd()*6.28,d:rnd()*2.2,sp:2+rnd()*3,oa:rnd()*6.28,os:.3+rnd()*.5,tx:0,ty:0,sx:0,sy:0})}for(let i=0;i<150;i++)stars.push([rnd(),rnd(),rnd()*1.3+.4,rnd()*6.28])}
+function prep(){fs=Math.max(30,Math.min(W*.1,96));const o=document.createElement('canvas');o.width=W;o.height=H;const c=o.getContext('2d');c.font=`italic 600 ${fs}px "Cormorant Garamond",Georgia,serif`;const L=[];let l='';for(const w of 'Sayan Mahjuba Suha'.split(' ')){const s=l?l+' '+w:w;if(l&&c.measureText(s).width>W*.88){L.push(l);l=w}else l=s}L.push(l);
+c.fillStyle='#fff';c.textAlign='center';c.textBaseline='middle';L.forEach((s,k)=>c.fillText(s,W/2,H/2+(k-(L.length-1)/2)*fs*1.15));
+const g=W<700?4:3,d=c.getImageData(0,0,W,H).data,pt=[];for(let y=0;y<H;y+=g)for(let x=0;x<W;x+=g)if(d[(y*W+x)*4+3]>140)pt.push([x+(rnd()-.5)*g,y+(rnd()-.5)*g]);
+pt.sort(()=>rnd()-.5);npts=Math.min(pt.length,P.length-130);for(let i=0;i<npts;i++){P[i].tx=pt[i][0];P[i].ty=pt[i][1]}
+const r=document.documentElement.style;r.setProperty('--nf',fs+'px');r.setProperty('--off',(L.length*fs*.575+24)+'px')}
+function helix(x,y,h,am,ph,al,n=48){if(al<=0)return;cx.strokeStyle='#8fdcff';cx.lineWidth=1;for(let i=0;i<=n;i++){const f=i/n,yy=y-h/2+f*h,a=ph+f*10,s1=Math.sin(a),z=Math.cos(a),xa=x+s1*am,xb=x-s1*am;if(i%3==0){cx.globalAlpha=al*.3;cx.beginPath();cx.moveTo(xa,yy);cx.lineTo(xb,yy);cx.stroke()}const r1=3+2.5*z,r2=3-2.5*z;cx.globalAlpha=al*(.55+.35*z);cx.drawImage(spr[0],xa-r1*2,yy-r1*2,r1*4,r1*4);cx.globalAlpha=al*(.55-.35*z);cx.drawImage(spr[2],xb-r2*2,yy-r2*2,r2*4,r2*4)}}
+function burst(){for(let k=0;k<Math.min(600,P.length);k++){const p=P[k];p.x=W/2+(rnd()-.5)*W*.55;p.y=H/2+(rnd()-.5)*H*.12;p.vx=(rnd()-.5)*260;p.vy=(rnd()-.5)*200-30}}
+function worm(id,y,sp,am){let d='';for(let x=0;x<=170;x+=8)d+=(x?'L':'M')+(20+x)+' '+(y+Math.sin(x*.07-t*sp)*am*(.3+x/170*.7)).toFixed(1);$(id).setAttribute('d',d)}
+function draw(i,s,dt){cx.clearRect(0,0,W,H);cx.globalCompositeOperation='lighter';
+for(const q of stars){cx.globalAlpha=.25+.25*Math.sin(t*.8+q[3]);cx.fillStyle='#bcd8ff';cx.fillRect(q[0]*W,q[1]*H,q[2],q[2])}
+if(i==0&&s>10.8&&!dis){dis=1;sc[0].classList.add('dis');burst()}
+if(i==5&&s>12&&!fin){fin=1;sc[5].classList.add('fin')}
+if(i==3){worm('#w1',100,2,14);worm('#w2',100,2.6,16)}
+if(i==0)for(let k=0;k<3;k++)helix(W*(.18+k*.32)+Math.sin(t*.2+k)*20,H*(k%2?.6:.35)+Math.cos(t*.15+k)*14,H*.28,16,t*.8+k,Math.min(1,s/6)*(s>10.8?Math.max(0,1-(s-10.8)/1.5):1)*.35,24);
+if(i==1){const a=Math.min(1,s/3)*.5,am=Math.min(W*.07,60);helix(W*.1+am,H/2,H*.8,am,t*.6,a);helix(W*.9-am,H/2,H*.8,am,2-t*.6,a);helix(W/2,H/2,H*.9,Math.min(W*.2,170),t*.5,Math.min(1,Math.max(0,(s-9)/3))*.16)}
+if(i==5&&fin)helix(W/2,H/2,H*.92,Math.min(W*.16,130),t*.7,Math.min(1,(s-12)/3)*.6);
+const gA=i==1,ba=i==0?.7:(gA?.9:.45);
+for(let k=0;k<P.length;k++){const p=P[k];let a=ba,sz=p.sz*.45,c=p.c;
+if(gA&&k<npts){const u=rm?1:Math.max(0,Math.min(1,(s-1-p.d)/4.2)),e=u*u*(3-2*u),r=1-e,an=r*p.sp,co=Math.cos(an),si=Math.sin(an),dx=p.sx-p.tx,dy=p.sy-p.ty;
+p.x=p.tx+(dx*co-dy*si)*r+(u>=1?Math.sin(t*2+p.ph)*.7:0);p.y=p.ty+(dx*si+dy*co)*r+(u>=1?Math.cos(t*2+p.ph)*.7:0);
+sz=2.4+(k%23==0?5*(.5+.5*Math.sin(t*3+p.ph)):0)+r*2.5;a=.5+.4*Math.sin(t*2.5+p.ph)*e+r*.3;if(c==2)c=1}
+else{p.vx+=(p.bx-p.vx)*dt*.6;p.vy+=(p.by-p.vy)*dt*.6;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.x<-9)p.x=W+9;if(p.x>W+9)p.x=-9;if(p.y<-9)p.y=H+9;if(p.y>H+9)p.y=-9;
+if(gA&&s>3){const an=p.oa+t*p.os,u=Math.min(1,(s-3)/4)*Math.min(1,dt*2),ox=W/2+Math.cos(an)*Math.min(W*.46,fs*5.2),oy=H/2+Math.sin(an)*fs*(.9+.5*Math.sin(p.ph))*1.1;p.x+=(ox-p.x)*u;p.y+=(oy-p.y)*u;a=.8;sz=p.sz*.5}}
+cx.globalAlpha=Math.max(0,Math.min(1,a));cx.drawImage(spr[c],p.x-sz,p.y-sz,sz*2,sz*2)}
+cx.globalAlpha=1}
+function audio(){if(au)return;try{const C=new(window.AudioContext||window.webkitAudioContext)(),m=C.createGain(),cp=C.createDynamicsCompressor(),f=C.createBiquadFilter(),rv=C.createConvolver(),wet=C.createGain(),dry=C.createGain(),n=Math.floor(C.sampleRate*3.5),ib=C.createBuffer(2,n,C.sampleRate);for(let c=0;c<2;c++){const d=ib.getChannelData(c);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.5)}
+rv.buffer=ib;wet.gain.value=.55;dry.gain.value=.6;f.type='lowpass';f.frequency.value=1100;f.Q.value=.3;m.gain.setValueAtTime(0,C.currentTime);m.gain.linearRampToValueAtTime(.2,C.currentTime+8);f.connect(dry);f.connect(rv);rv.connect(wet);dry.connect(cp);wet.connect(cp);cp.connect(m);m.connect(C.destination);
+[110,164.81,220,277.18,329.63].forEach((fr,k)=>{const o=C.createOscillator(),o2=C.createOscillator(),g=C.createGain(),l=C.createOscillator(),lg=C.createGain();o.frequency.value=fr;o2.frequency.value=fr*1.002;g.gain.value=.08;l.frequency.value=.05+k*.017;lg.gain.value=.05;l.connect(lg);lg.connect(g.gain);o.connect(g);o2.connect(g);g.connect(f);o.start();o2.start();l.start()});au={C,m}}catch(e){}}
+function audioOld(){if(au)return;try{const C=new(window.AudioContext||window.webkitAudioContext)(),m=C.createGain(),f=C.createBiquadFilter(),l=C.createOscillator(),lg=C.createGain();m.gain.value=0;m.gain.linearRampToValueAtTime(.22,C.currentTime+6);f.type='lowpass';f.frequency.value=380;l.frequency.value=.07;lg.gain.value=160;l.connect(lg);lg.connect(f.frequency);l.start();
+[[55,'sine'],[82.4,'sine'],[110.3,'triangle'],[164.8,'sine']].forEach(([fr,ty],k)=>{const o=C.createOscillator(),g=C.createGain();o.type=ty;o.frequency.value=fr;o.detune.value=k*3;g.gain.value=k==3?.05:.25;o.connect(g);g.connect(f);o.start()});f.connect(m);m.connect(C.destination);au={C,m}}catch(e){}}
+function chime(i){if(!au||mute||i<1)return;const C=au.C,n=[392,523.3,587.3,659.3,784][i-1]||440;[1,2].forEach((k,j)=>{const o=C.createOscillator(),g=C.createGain();o.frequency.value=n*k;g.gain.setValueAtTime(.0001,C.currentTime);g.gain.linearRampToValueAtTime(.03/(j+1),C.currentTime+.9);g.gain.exponentialRampToValueAtTime(.0001,C.currentTime+5);o.connect(g);g.connect(C.destination);o.start();o.stop(C.currentTime+5.2)})}
+function enter(i){cur=i;dis=fin=0;sc.forEach(s=>s.classList.remove('on','dis','fin'));void document.body.offsetWidth;sc[i].classList.add('on');document.body.classList.toggle('sci',i>1);
+if(i==0){const v=$('#veil');v.classList.remove('go');void v.offsetWidth;v.classList.add('go')}
+if(i==1)prep();
+P.forEach(p=>{if(i==1){p.sx=p.x;p.sy=p.y}else{p.vx=(rnd()-.5)*90;p.vy=(rnd()-.5)*90}});chime(i)}
+function loop(ts){requestAnimationFrame(loop);const dt=Math.min(.05,(ts-last)/1000||0);last=ts;if(!on||paused)return;t+=dt;let i=5;while(i&&t<ST[i])i--;if(i!==cur)enter(i);draw(i,t-ST[i],dt);$('#pg').style.width=Math.min(100,t/tot*100)+'%'}
+function start(snd){if(snd)audio();$('#sd').textContent=snd?'Sound off':'Sound on';$('#go').style.opacity=0;setTimeout(()=>$('#go').remove(),1000);$('#ui').style.opacity=1;t=0;on=true}
+$('#bs').onclick=()=>start(1);$('#bn').onclick=()=>start(0);
+$('#pz').onclick=()=>{paused=!paused;document.body.classList.toggle('paused',paused);$('#pz').textContent=paused?'Resume':'Pause';au&&(paused?au.C.suspend():au.C.resume())};
+$('#rp').onclick=()=>{t=0;cur=-1;if(paused)$('#pz').click()};
+$('#sk').onclick=()=>{if(cur<5)t=ST[cur+1]+.01};
+$('#sd').onclick=()=>{if(!au){audio();mute=false;$('#sd').textContent='Sound off';return}mute=!mute;au.m.gain.setTargetAtTime(mute?0:.22,au.C.currentTime,.3);$('#sd').textContent=mute?'Sound on':'Sound off'};
+(()=>{let h='';for(let x=-6;x<470;x+=13)h+=`<circle cx="${x}" cy="256" r="5.5" fill="#3f6fb8"/><circle cx="${x+6}" cy="284" r="5.5" fill="#3f6fb8"/><path d="M${x} 262v7M${x+3} 262v7M${x+6} 278v-7M${x+9} 278v-7" stroke="#5a86c8" stroke-width="1.6" opacity=".7"/>`;$('#lip').innerHTML=h})();
+addEventListener('resize',size);size();init();
+try{document.fonts.load('italic 600 40px "Cormorant Garamond"').catch(()=>{})}catch(e){}
+requestAnimationFrame(loop);
+</script></body></html>
